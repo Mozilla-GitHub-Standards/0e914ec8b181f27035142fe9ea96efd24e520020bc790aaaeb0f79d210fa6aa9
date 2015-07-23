@@ -10,7 +10,7 @@ export default class HtmlComponent extends React.Component {
         <head>
           <meta charSet="utf-8" />
           <title>{this.props.context.getStore(ApplicationStore).getPageTitle()}</title>
-          <link rel="stylesheet" href="/static/jugband.css" />
+          <link rel="stylesheet" href="/public/jugband.css" />
           <link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css" />
           <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
         </head>

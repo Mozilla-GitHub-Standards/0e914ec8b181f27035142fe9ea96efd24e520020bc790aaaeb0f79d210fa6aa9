@@ -9,8 +9,8 @@ export default class Header extends React.Component {
     return (
       <header>
         <h1>
-          <a className="workmark" href="https://marketplace.firefox.com">Firefox Marketplace</a>
-          <NavLink routeName="activity">Jugband</NavLink>
+          <a className="wordmark" href="https://marketplace.firefox.com">Firefox Marketplace</a>
+          <NavLink className="site-name" routeName="activity">Jugband</NavLink>
         </h1>
         <button className="hamburger"><span>Toggle Menu</span></button>
         <Nav/>
