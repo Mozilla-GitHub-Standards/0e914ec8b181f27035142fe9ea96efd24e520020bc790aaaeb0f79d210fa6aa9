@@ -66,6 +66,7 @@ var transmogrify = function(data) {
   var results = [];
   data['items'].forEach(function(old, index) {
     var item = {};
+    item['id'] = old['id'];
     item['name'] = old['title'];
     item['podio_link'] = old['link'];
     old['fields'].forEach(function(field, index) {

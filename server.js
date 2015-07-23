@@ -1,6 +1,7 @@
 'use strict';
 require('babel/register');
 var express = require('express');
+var bodyParser = require('body-parser')
 var serialize = require('serialize-javascript');
 var navigateAction = require('fluxible-router').navigateAction;
 var React = require('react');
@@ -9,11 +10,19 @@ var api = require('./api');
 var HtmlComponent = React.createFactory(require('./components/Html.js'));
 var createElement = require('fluxible-addons-react/createElementWithContext');
 
+
 var server = express();
 server.use('/public', express.static(__dirname + '/build'));
+server.use(bodyParser.json({ type: 'application/*+json' }))
+
+var fetchrPlugin = app.getPlugin('FetchrPlugin');
 server.use('/api', api);
+
+fetchrPlugin.registerService(require('./services/activity'));
+server.use(fetchrPlugin.getXhrPath(), fetchrPlugin.getMiddleware());
+
 server.use(function (req, res, next) {
-  var context = app.createContext();
+  var context = app.createContext({ req: req });
   context.executeAction(navigateAction, { url: req.url }, function (err) {
     if (err) {
       if (err.statusCode && err.statusCode === 404) {
