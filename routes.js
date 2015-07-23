@@ -1,12 +1,14 @@
+import getActivity from './actions/getActivity';
+
+
 export default {
   activity: {
     path: '/',
     method: 'get',
     handler: require('./components/handlers/Activity'),
     label: 'Activity',
-    action: (context, payload, done) => {
-      context.dispatch('UPDATE_PAGE_TITLE', { pageTitle: 'Activity' });
-      done();
+    action (context, payload, done) {
+      context.executeAction(getActivity, {}, done);
     }
   },
   roadmap: {
