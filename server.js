@@ -5,12 +5,13 @@ var serialize = require('serialize-javascript');
 var navigateAction = require('fluxible-router').navigateAction;
 var React = require('react');
 var app = require('./app');
+var api = require('./api');
 var HtmlComponent = React.createFactory(require('./components/Html.js'));
 var createElement = require('fluxible-addons-react/createElementWithContext');
 
 var server = express();
 server.use('/public', express.static(__dirname + '/build'));
-
+server.use('/api', api);
 server.use(function (req, res, next) {
   var context = app.createContext();
   context.executeAction(navigateAction, { url: req.url }, function (err) {

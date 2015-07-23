@@ -2,7 +2,7 @@ export default {
   activity: {
     path: '/',
     method: 'get',
-    handler: require('./components/Activity'),
+    handler: require('./components/handlers/Activity'),
     label: 'Activity',
     action: (context, payload, done) => {
       context.dispatch('UPDATE_PAGE_TITLE', { pageTitle: 'Activity' });
@@ -12,7 +12,7 @@ export default {
   roadmap: {
     path: '/roadmap',
     method: 'get',
-    handler: require('./components/Roadmap'),
+    handler: require('./components/handlers/Roadmap'),
     label: 'Roadmap',
     action: (context, payload, done) => {
       context.dispatch('UPDATE_PAGE_TITLE', { pageTitle: 'Roadmap' });
@@ -22,7 +22,7 @@ export default {
   ondeck: {
     path: '/ondeck',
     method: 'get',
-    handler: require('./components/OnDeck'),
+    handler: require('./components/handlers/OnDeck'),
     label: 'On Deck',
     action: (context, payload, done) => {
       context.dispatch('UPDATE_PAGE_TITLE', { pageTitle: 'On Deck' });
