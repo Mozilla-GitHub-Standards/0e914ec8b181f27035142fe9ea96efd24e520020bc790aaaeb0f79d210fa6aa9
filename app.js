@@ -7,7 +7,6 @@ import Application from './components/Application';
 import ActivityStore from './stores/ActivityStore';
 import ApplicationStore from './stores/ApplicationStore';
 import OnDeckStore from './stores/OnDeckStore';
-import PageStore from './stores/PageStore';
 import RoadmapStore from './stores/RoadmapStore';
 import RouteStore from './stores/RouteStore';
 
@@ -17,7 +16,6 @@ let app = new Fluxible({
   stores: [
     RouteStore,
     ApplicationStore,
-    PageStore,
     ActivityStore,
     OnDeckStore,
     RoadmapStore,
