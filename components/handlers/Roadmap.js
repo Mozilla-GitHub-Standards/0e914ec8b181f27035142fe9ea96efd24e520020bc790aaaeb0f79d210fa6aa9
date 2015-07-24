@@ -3,12 +3,13 @@ import React from 'react';
 
 import RoadmapStore from '../../stores/RoadmapStore';
 
-import RoadmapItem from '../RoadmapItem';
+import RoadmapItem from '../podio/RoadmapItem';
 
 
 @connectToStores([RoadmapStore], (context, props) => ({
   onDeckItems: context.getStore(RoadmapStore).getAll()
 }))
+
 class Roadmap extends React.Component {
   getRoadmapItem (item, index) {
     return <RoadmapItem key={item.id} index={index} item={item}/>;

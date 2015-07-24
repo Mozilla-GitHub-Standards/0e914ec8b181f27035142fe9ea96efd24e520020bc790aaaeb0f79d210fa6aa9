@@ -3,12 +3,13 @@ import React from 'react';
 
 import OnDeckStore from '../../stores/OnDeckStore';
 
-import OnDeckItem from '../OnDeckItem';
+import OnDeckItem from '../podio/OnDeckItem';
 
 
 @connectToStores([OnDeckStore], (context, props) => ({
   onDeckItems: context.getStore(OnDeckStore).getAll()
 }))
+
 class OnDeck extends React.Component {
   getOnDeckItem (item, index) {
     return <OnDeckItem key={item.id} index={index} item={item}/>;
