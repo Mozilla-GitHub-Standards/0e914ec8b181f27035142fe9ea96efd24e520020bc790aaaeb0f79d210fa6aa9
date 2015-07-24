@@ -10,13 +10,11 @@ export default class OnDeckStore extends BaseStore {
   }
 
   receiveOnDeckItems (payload) {
-    console.log('OnDeckStore.receiveOnDeckItems()');
     this.onDeckItems = payload;
     this.emitChange();
   }
 
   getAll () {
-    console.log('OnDeckStore.getAll()');
     return this.onDeckItems;
   }
 

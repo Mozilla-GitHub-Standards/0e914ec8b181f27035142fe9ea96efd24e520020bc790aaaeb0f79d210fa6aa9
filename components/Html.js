@@ -19,6 +19,7 @@ export default class HtmlComponent extends React.Component {
         </body>
         <script dangerouslySetInnerHTML={{__html: this.props.state}}></script>
         <script src="/public/js/client.js" defer></script>
+        <script src="/public/jugband.js" defer></script>
       </html>
     )
   }

@@ -36,7 +36,9 @@ export default class Application extends React.Component {
     return (
       <div>
         <Header/>
-        <Handler/>
+        <main>
+          <Handler/>
+        </main>
         <Footer/>
       </div>
     );
