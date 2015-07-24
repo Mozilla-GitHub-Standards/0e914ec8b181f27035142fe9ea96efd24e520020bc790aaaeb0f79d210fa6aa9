@@ -6,23 +6,21 @@ import ActivityStore from '../../stores/ActivityStore';
 import ActivityItem from '../ActivityItem';
 
 
-function getActivityItem(item) {
-  return <ActivityItem key={item.id} item={item}/>;
-}
-
-
 @connectToStores([ActivityStore], (context, props) => ({
   activity_items: context.getStore(ActivityStore).getAll()
 }))
+
 class Activity extends React.Component {
+  getActivityItem (item, index) {
+    return <ActivityItem key={item.id} index={index} item={item}/>;
+  }
+
+  getActivityItems () {
+    return this.props.activity_items.map(this.getActivityItem);
+  }
+
   render() {
-    var activityItems = this.props.activity_items.map(getActivityItem);
-    return (
-      <section>
-        <h2>Activity</h2>
-        {activityItems}
-      </section>
-    );
+    return <section>{this.getActivityItems()}</section>;
   }
 }
 
@@ -31,4 +29,3 @@ Activity.propTypes = {
 };
 
 export default Activity;
-

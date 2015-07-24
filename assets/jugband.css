@@ -28,6 +28,9 @@ dt,
 dd {
   display: inline-block; 
 }
+dd::before {
+  display: none;
+}
 main {
   padding: 0 25px;
 }
@@ -196,7 +199,7 @@ footer a:hover {
   font-weight: 400;
 }
 .meta dt:after {
-  content: '\3a';
+  content: '\3a\a0';
 }
 
 /* Homepage: Links */
@@ -213,7 +216,7 @@ footer a:hover {
   text-transform: none;
 }
 .links h3:after {
-  content: '\3a';
+  content: '\3a\a0';
 }
 .links ul,
 .links li {
@@ -223,7 +226,7 @@ footer a:hover {
   color: #1a1a1a;
 }
 .links li:after {
-  content: '\2c';
+  content: '\2c\a0';
 }
 .links li:last-child:after {
   content: '';
@@ -281,17 +284,18 @@ footer a:hover {
   width: 100%;
   z-index: 3;
 }
-.progress dd span {
+.progress dd .progress {
   display: inline-block;
   height: 20px;
+  margin: 0;
   min-width: 40px;
   padding: 5px 5px 0;
   text-align: right;
 }
-.define span, .concept span { background-color: #197B99; }
-.design span { background-color: #CC440D; }
-.code span { background-color: #CC3388; }
-.test span { background-color: #7A3675; }
+.define .progress, .concept .progress { background-color: #197B99; }
+.design .progress { background-color: #CC440D; }
+.code .progress { background-color: #CC3388; }
+.test .progress { background-color: #7A3675; }
 
 /* Homepage: Next steps */
 .blockotext {
