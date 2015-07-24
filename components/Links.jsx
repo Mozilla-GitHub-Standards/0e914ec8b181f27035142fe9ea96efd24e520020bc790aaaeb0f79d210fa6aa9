@@ -12,6 +12,7 @@ export default class Links extends React.Component {
       {label: 'Build Bugs', href: this.props.item['Build Bugs'] || false},
       {label: 'Test Plan', href: this.props.item['Test Plan'] || false},
       {label: 'Meeting Minutes', href: this.props.item['Meeting Minutes'] || false},
+      {label: 'Concept Docs', href: this.props.item['Concept Docs'] || false},
     ];
   }
 
@@ -19,7 +20,7 @@ export default class Links extends React.Component {
     let items = [];
     this.linkMapping().forEach(link => {
       if (link.href) {
-        items.push(<LinkItem label={link.label} href={link.href}/>);
+        items.push(<LinkItem key={link.label} label={link.label} href={link.href}/>);
       }
     });
     return items;

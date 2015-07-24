@@ -15,9 +15,9 @@ export default class Heroes extends React.Component {
 
   heroes() {
     let heroes = [];
-    this.heroMapping().forEach((hero, index) => {
+    this.heroMapping().forEach(hero => {
       if (hero.value) {
-        heroes.push(<HeroItem key={index} label={hero.label} slug={hero.slug} value={hero.value}/>);
+        heroes.push(<HeroItem key={hero.slug} label={hero.label} slug={hero.slug} value={hero.value}/>);
       }
     });
     return heroes;

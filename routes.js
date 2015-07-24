@@ -1,4 +1,6 @@
 import getActivity from './actions/getActivity';
+import getOnDeck from './actions/getOnDeck';
+import getRoadmap from './actions/getRoadmap';
 
 
 export default {
@@ -16,9 +18,8 @@ export default {
     method: 'get',
     handler: require('./components/handlers/Roadmap'),
     label: 'Roadmap',
-    action: (context, payload, done) => {
-      context.dispatch('UPDATE_PAGE_TITLE', { pageTitle: 'Roadmap' });
-      done();
+    action (context, payload, done) {
+      context.executeAction(getRoadmap, {}, done);
     }
   },
   ondeck: {
@@ -26,9 +27,8 @@ export default {
     method: 'get',
     handler: require('./components/handlers/OnDeck'),
     label: 'On Deck',
-    action: (context, payload, done) => {
-      context.dispatch('UPDATE_PAGE_TITLE', { pageTitle: 'On Deck' });
-      done();
+    action (context, payload, done) {
+      context.executeAction(getOnDeck, {}, done);
     }
   }
 };
