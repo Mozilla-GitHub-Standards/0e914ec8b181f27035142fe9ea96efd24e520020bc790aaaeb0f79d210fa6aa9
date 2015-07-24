@@ -15,9 +15,9 @@ export default class Progress extends React.Component {
 
   progressItems() {
     let progressItems = [];
-    this.progressItemMapping().forEach((progressItem, index) => {
+    this.progressItemMapping().forEach((progressItem) => {
       if (progressItem.value) {
-        progressItems.push(<ProgressItem key={index} label={progressItem.label} slug={progressItem.slug} value={progressItem.value}/>);
+        progressItems.push(<ProgressItem key={progressItem.slug} label={progressItem.label} slug={progressItem.slug} value={progressItem.value}/>);
       }
     });
     return progressItems;

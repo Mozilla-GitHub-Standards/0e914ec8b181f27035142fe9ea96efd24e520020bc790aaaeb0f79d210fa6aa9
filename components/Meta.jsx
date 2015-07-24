@@ -33,13 +33,13 @@ export default class Meta extends React.Component {
   }
 
   metaItems() {
-    let items = [];
-    this.metaMapping().forEach(metaItem => {
+    let metaItems = [];
+    this.metaMapping().forEach((metaItem, index) => {
       if (metaItem.value) {
-        items.push(<MetaItem label={metaItem.label} value={metaItem.value}/>);
+        metaItems.push(<MetaItem key={index} label={metaItem.label} value={metaItem.value}/>);
       }
     });
-    return items;
+    return metaItems;
   }
 
   render() {

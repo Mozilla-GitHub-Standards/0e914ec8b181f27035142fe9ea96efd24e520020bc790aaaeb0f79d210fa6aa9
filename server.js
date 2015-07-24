@@ -17,8 +17,9 @@ server.use(bodyParser.json({ type: 'application/*+json' }))
 
 var fetchrPlugin = app.getPlugin('FetchrPlugin');
 server.use('/api', api);
-
 fetchrPlugin.registerService(require('./services/activity'));
+fetchrPlugin.registerService(require('./services/ondeck'));
+fetchrPlugin.registerService(require('./services/roadmap'));
 server.use(fetchrPlugin.getXhrPath(), fetchrPlugin.getMiddleware());
 
 server.use(function (req, res, next) {
