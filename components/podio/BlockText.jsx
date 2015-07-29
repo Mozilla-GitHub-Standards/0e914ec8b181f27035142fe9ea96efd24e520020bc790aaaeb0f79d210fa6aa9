@@ -7,10 +7,12 @@ export default class BlockText extends React.Component {
   }
 
   render() {
+    let text = this.getText();
+    if (!text.__html) { return false; }
     return (
       <section className="blockotext">
         <h3>{this.props.label}</h3>
-        <div dangerouslySetInnerHTML={this.getText()} />
+        <div dangerouslySetInnerHTML={text} />
       </section>
     );
   }
