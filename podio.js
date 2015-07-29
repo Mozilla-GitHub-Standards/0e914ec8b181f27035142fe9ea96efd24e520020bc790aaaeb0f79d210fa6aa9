@@ -64,47 +64,47 @@ function PodioAuthenticate() {
 // http://www.lovine.com/hobbes/comics/chimage.php?image=transmogrifier2.gif
 var transmogrify = function(data) {
   var results = [];
-  data['items'].forEach(function(old, index) {
-    var item = {};
-    item['id'] = old['id'];
-    item['name'] = old['title'];
-    item['podio_link'] = old['link'];
-    old['fields'].forEach(function(field, index) {
+  data['items'].forEach(function(before, index) {
+    var after = {};
+    after['id'] = before['app_item_id'];
+    after['name'] = before['title'];
+    after['podio_link'] = before['link'];
+    before['fields'].forEach(function(field, index) {
       switch (field['type']) {
         case 'date':
           if ('start_date' in field['values'][0]) {
             var label = format('%s_start', field['label']);
-            item[label] = field['values'][0]['start_date']
+            after[label] = field['values'][0]['start_date']
           }
           if ('end_date' in field['values'][0]) {
             var label = format('%s_end', field['label']);
-            item[label] = field['values'][0]['end_date']
+            after[label] = field['values'][0]['end_date']
           }
           break;
         case 'progress':
         case 'text':
-          item[field['label']] = field['values'][0]['value']
+          after[field['label']] = field['values'][0]['value']
           break;
         case 'app':
         case 'category':
           if (field['values'].length === 1) {
-            item[field['label']] = field['values'][0]['value']['text']
+            after[field['label']] = field['values'][0]['value']['text']
           } else {
-            item[field['label']] = []
+            after[field['label']] = []
             field['values'].forEach(function(value, index) {
-                item[field['label']].push(value['value']['text'])
+                after[field['label']].push(value['value']['text'])
             })
           }
           break;
         case 'embed':
-          item[field['label']] = field['values'][0]['embed']['url']
+          after[field['label']] = field['values'][0]['embed']['url']
           break;
         case 'number':
-          item[field['label']] = int(field['values'][0]['value'])
+          after[field['label']] = int(field['values'][0]['value'])
           break;
       }
     });
-    results.push(item);
+    results.push(after);
   });
   return results;
 };
