@@ -2,6 +2,7 @@
 require('babel/register');
 var express = require('express');
 var bodyParser = require('body-parser')
+var favicon = require('serve-favicon');
 var serialize = require('serialize-javascript');
 var navigateAction = require('fluxible-router').navigateAction;
 var React = require('react');
@@ -42,6 +43,8 @@ server.use(function (req, res, next) {
     res.send(html);
   });
 });
+
+server.use(favicon(__dirname + '/assets/jug.png'));
 
 var port = process.env.PORT || 3000;
 server.listen(port);
