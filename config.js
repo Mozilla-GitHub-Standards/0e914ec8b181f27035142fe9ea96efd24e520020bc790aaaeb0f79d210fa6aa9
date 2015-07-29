@@ -1,8 +1,9 @@
 var config = require('nconf');
 
 var DEFAULTS = {
-  PODIO_APP_ID: 6761871
+  PODIO_APP_ID: 6761871,
+  PORT: 3000
 };
 var LOCAL = './config.local.json';
 
-module.exports = config.argv().file({ file: LOCAL }).defaults(DEFAULTS);
+module.exports = config.env().argv().file({ file: LOCAL }).defaults(DEFAULTS);
