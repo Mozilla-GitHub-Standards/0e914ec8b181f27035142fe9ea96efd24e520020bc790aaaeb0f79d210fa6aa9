@@ -1,5 +1,6 @@
 'use strict';
 require('babel/register');
+var config = require('./config');
 var express = require('express');
 var bodyParser = require('body-parser')
 var favicon = require('serve-favicon');
@@ -45,7 +46,4 @@ server.use(function (req, res, next) {
 });
 
 server.use(favicon(__dirname + '/assets/jug.png'));
-
-var port = process.env.PORT || 3000;
-server.listen(port);
-console.log('Listening on port ' + port);
+server.listen(config.get('PORT'));
