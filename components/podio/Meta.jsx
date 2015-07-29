@@ -25,6 +25,7 @@ export default class Meta extends React.Component {
   metaMapping() {
     return [
       {label: 'Team', value: this.getTeam()},
+      {label: 'Roadmap', value: this.props.item['Roadmap Status'] || false},
       {label: 'Phase', value: this.getPhase()},
       {label: 'Priority', value: this.props.item['Priority'] || false},
       {label: 'T-Shirt', value: this.props.item['T-shirt'] || false},
