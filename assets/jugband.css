@@ -312,10 +312,16 @@ footer a:hover {
 .blockotext li:first-child {
   margin-top: 0;
 }
+.blockotext ol,
 .blockotext ul {
-  list-style: disc outside;
   margin: 8px 0 16px 5px;
   padding-left: 20px;
+}
+.blockotext ol {
+  list-style: decimal outside;
+}
+.blockotext ul {
+  list-style: disc outside;
 }
 
 @media only screen and (max-width: 1049px)  {
