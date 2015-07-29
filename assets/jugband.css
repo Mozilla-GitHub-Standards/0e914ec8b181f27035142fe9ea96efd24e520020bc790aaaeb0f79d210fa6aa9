@@ -65,6 +65,7 @@ section {
   width: 20px;
 }
 
+/* Throbber */
 @keyframes throbber{
   0% {
     background: #9E1455;
@@ -76,7 +77,6 @@ section {
     opacity: .5
   }
 }
-
 .throbber {
   align-items: center;
   background: #F1F1F1;
@@ -84,23 +84,16 @@ section {
   justify-content: center;
   height: 100%;
   left: 0;
-  opacity: 0;
   padding: 80px 20px 20px;
   position: fixed;
   top: 0;
-  transition: visibility 0s linear 250ms, opacity 250ms ease-in;
-  transition-delay: 100ms;
   visibility: hidden;
   width: 100%;
   z-index: 2;
 }
-
 .throbber-visible {
-  opacity: 1;
-  transition-delay: 0s;
   visibility: visible;
 }
-
 .throbber p {
   background: url('header-logo.svg') no-repeat center;
   background-size: 102px 99px;
@@ -108,7 +101,6 @@ section {
   text-align: center;
   width: 102px;
 }
-
 .throbber p:before,
 .throbber span,
 .throbber p:after {
@@ -121,17 +113,14 @@ section {
   margin: 85px 5px 0;
   width: 20px;
 }
-
 .throbber p:before,
 .throbber p:after {
   content: '';
 }
-
 .throbber span {
   overflow: hidden;
   text-indent: -999em;
 }
-
 .throbber p:before {
     animation-delay: 0s;
 }

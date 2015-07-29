@@ -39,7 +39,7 @@ export default class Application extends React.Component {
         <main>
           <Handler/>
         </main>
-        <Footer/>
+        <Footer hide={this.props.store.pageIsLoading}/>
       </div>
     );
   }
