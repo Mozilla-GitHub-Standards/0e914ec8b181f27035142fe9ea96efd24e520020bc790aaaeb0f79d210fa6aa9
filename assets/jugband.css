@@ -98,6 +98,7 @@ section {
   background: url('header-logo.svg') no-repeat center;
   background-size: 102px 99px;
   height: 99px;
+  position: relative;
   text-align: center;
   width: 102px;
 }
@@ -108,9 +109,11 @@ section {
   border-radius: 2px;
   display: inline-block;
   height: 20px;
+  margin: 0 5px;
   opacity: .5;
+  position: absolute;
   transition: opacity .5s ease-in-out;
-  margin: 85px 5px 0;
+  top: 85px;
   width: 20px;
 }
 .throbber p:before,
@@ -123,12 +126,15 @@ section {
 }
 .throbber p:before {
     animation-delay: 0s;
+    left: 6px;
 }
 .throbber span {
     animation-delay: .16s;
+    left: 36px;
 }
 .throbber p:after {
     animation-delay: .24s;
+    left: 66px;
 }
 
 
