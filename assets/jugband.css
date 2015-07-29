@@ -404,6 +404,45 @@ footer a:hover {
   list-style: disc outside;
 }
 
+.sort {
+  align-items: center;
+  background: #006DBF;
+  color: #FFF;
+  display: flex;
+  font-size: 13px;
+  justify-content: center;
+  line-height: 1;
+  margin: 0 -25px;
+  padding: 15px 25px;
+}
+.sort p {
+  margin-right: 5px;
+}
+.sort ul {
+  background: #006DBF;
+  color: #FFF;
+  display: flex;
+  justify-content: flex-start;
+  list-style: none;
+}
+.sort li {
+  margin-left: 10px;
+}
+.sort a {
+  border-radius: 5px;
+  color: #FFF;
+  padding: 7px 9px 6px;
+  text-decoration: none;
+  transition: all 0.05s;
+}
+.sort a:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+.sort a.active {
+  background: #FFF;
+  color: #006DBF;
+}
+
 @media only screen and (max-width: 1049px)  {
   article section {
     width: 100% !important;
@@ -508,5 +547,9 @@ footer a:hover {
     background: #1A95FC;
     cursor: default;
     text-decoration: none;
+  }
+  .sort {
+    margin: 0 -15px;
+    padding: 15px;
   }
 }

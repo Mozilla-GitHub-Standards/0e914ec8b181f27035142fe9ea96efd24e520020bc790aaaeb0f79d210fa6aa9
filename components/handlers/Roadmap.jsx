@@ -4,11 +4,16 @@ import React from 'react';
 import RoadmapStore from '../../stores/RoadmapStore';
 
 import RoadmapItem from '../podio/RoadmapItem';
+import RoadmapSort from '../podio/RoadmapSort';
 
 
-@connectToStores([RoadmapStore], (context, props) => ({
-  onDeckItems: context.getStore(RoadmapStore).getAll()
-}))
+@connectToStores([RoadmapStore], (context, props) => {
+  let store = context.getStore(RoadmapStore);
+  return {
+    onDeckItems: store.getAll(),
+    activeSort: store.getSort(),
+  }
+})
 
 class Roadmap extends React.Component {
   getRoadmapItem (item, index) {
@@ -19,8 +24,13 @@ class Roadmap extends React.Component {
     return this.props.onDeckItems.map(this.getRoadmapItem);
   }
 
-  render() {
-    return <section>{this.getRoadmapItems()}</section>;
+  render () {
+    return (
+      <section>
+        <RoadmapSort activeSort={this.props.activeSort}/>
+        {this.getRoadmapItems()}
+      </section>
+    );
   }
 }
 
