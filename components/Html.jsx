@@ -10,6 +10,7 @@ export default class HtmlComponent extends React.Component {
         <head>
           <meta charSet="utf-8" />
           <title>{this.props.context.getStore(ApplicationStore).getPageTitle()}</title>
+          <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1" />
           <link rel="stylesheet" href="/public/jugband.css" />
           <link rel="stylesheet" href="//code.cdn.mozilla.net/fonts/fira.css" />
           <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
