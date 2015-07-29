@@ -7,7 +7,7 @@ var navigateAction = require('fluxible-router').navigateAction;
 var React = require('react');
 var app = require('./app');
 var api = require('./api');
-var HtmlComponent = React.createFactory(require('./components/Html.js'));
+var Html = React.createFactory(require('./components/Html'));
 var createElement = require('fluxible-addons-react/createElementWithContext');
 
 
@@ -34,7 +34,7 @@ server.use(function (req, res, next) {
       return;
     }
     var exposed = 'window.App=' + serialize(app.dehydrate(context)) + ';';
-    var html = React.renderToStaticMarkup(HtmlComponent({
+    var html = React.renderToStaticMarkup(Html({
       state: exposed,
       markup: React.renderToString(createElement(context)),
       context: context.getComponentContext()
