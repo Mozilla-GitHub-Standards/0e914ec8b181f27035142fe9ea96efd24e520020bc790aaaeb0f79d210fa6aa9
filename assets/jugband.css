@@ -5,6 +5,7 @@ body {
   background: #F1F1F1;
   color: #1A1A1A;
   font: 300 14px/1 "Fira Sans OT", "Fira Sans", FiraSansWeb, sans-serif;
+  padding-top: 60px;
 }
 h2 {
   font-size: 21px;
@@ -64,6 +65,84 @@ section {
   width: 20px;
 }
 
+@keyframes throbber{
+  0% {
+    background: #9E1455;
+    opacity: 1
+  }
+  100%,
+  33.33%{
+    background: #CCC;
+    opacity: .5
+  }
+}
+
+.throbber {
+  align-items: center;
+  background: #F1F1F1;
+  display: flex; 
+  justify-content: center;
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  padding: 80px 20px 20px;
+  position: fixed;
+  top: 0;
+  transition: visibility 0s linear 250ms, opacity 250ms ease-in;
+  transition-delay: 100ms;
+  visibility: hidden;
+  width: 100%;
+  z-index: 2;
+}
+
+.throbber-visible {
+  opacity: 1;
+  transition-delay: 0s;
+  visibility: visible;
+}
+
+.throbber p {
+  background: url('header-logo.svg') no-repeat center;
+  background-size: 102px 99px;
+  height: 99px;
+  text-align: center;
+  width: 102px;
+}
+
+.throbber p:before,
+.throbber span,
+.throbber p:after {
+  animation: throbber 1s infinite ease-in;
+  border-radius: 2px;
+  display: inline-block;
+  height: 20px;
+  opacity: .5;
+  transition: opacity .5s ease-in-out;
+  margin: 85px 5px 0;
+  width: 20px;
+}
+
+.throbber p:before,
+.throbber p:after {
+  content: '';
+}
+
+.throbber span {
+  overflow: hidden;
+  text-indent: -999em;
+}
+
+.throbber p:before {
+    animation-delay: 0s;
+}
+.throbber span {
+    animation-delay: .16s;
+}
+.throbber p:after {
+    animation-delay: .24s;
+}
+
+
 /* Header */
 header,
 header h1,
@@ -77,8 +156,13 @@ nav ul {
 header {
   background: #FFF;
   height: 60px;
+  left: 0;
   line-height: 1;
   padding: 0 35px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 3;
 }
 .wordmark {
   background: url('header-logo.svg') no-repeat;
@@ -107,6 +191,7 @@ header {
   cursor: pointer;
   display: none;
   height: 36px;
+  outline: none;
   padding: 0;
   position: relative;
   width: 36px;
@@ -348,7 +433,7 @@ footer a:hover {
 
 @media only screen and (max-width: 640px)  {
   main {
-    padding: 60px 15px 0;
+    padding: 15px 15px 0;
   }
   article {
     margin: 15px auto;
