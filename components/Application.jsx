@@ -4,15 +4,18 @@ import React from 'react';
 
 import Header from './Header';
 import Footer from './Footer';
+import Throbber from './Throbber';
 
 import ApplicationStore from '../stores/ApplicationStore';
 
 
+let updateApplication = (context) => ({
+  store: context.getStore(ApplicationStore).getState()
+});
+
 @provideContext
 @handleHistory({enableScroll: false})
-@connectToStores([ApplicationStore], (context) => ({
-  ApplicationStore: context.getStore(ApplicationStore).getState()
-}))
+@connectToStores([ApplicationStore], updateApplication)
 export default class Application extends React.Component {
   static contextTypes = {
     getStore: React.PropTypes.func,
@@ -24,11 +27,7 @@ export default class Application extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    let newProps = this.props;
-    if (newProps.ApplicationStore.pageTitle === prevProps.ApplicationStore.pageTitle) {
-      return;
-    }
-    document.title = newProps.ApplicationStore.pageTitle;
+    document.title = this.props.store.pageTitle;
   }
 
   render() {
@@ -36,6 +35,7 @@ export default class Application extends React.Component {
     return (
       <div>
         <Header/>
+        <Throbber showThrobber={this.props.store.pageIsLoading}/>
         <main>
           <Handler/>
         </main>

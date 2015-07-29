@@ -5,6 +5,7 @@ class ApplicationStore extends BaseStore {
   constructor(dispatcher) {
     super(dispatcher);
     this.pageTitle = '';
+    this.pageIsLoading = false;
   }
 
   updatePageTitle(payload) {
@@ -16,9 +17,24 @@ class ApplicationStore extends BaseStore {
     return this.pageTitle;
   }
 
+  getPageIsLoading() {
+    return this.pageIsLoading;
+  }
+
+  showThrobber() {
+    this.pageIsLoading = true;
+    this.emitChange();
+  }
+
+  hideThrobber() {
+    this.pageIsLoading = false;
+    this.emitChange();
+  }
+
   getState() {
     return {
-      pageTitle: this.pageTitle
+      pageTitle: this.pageTitle,
+      pageIsLoading: this.pageIsLoading
     };
   }
 
@@ -28,12 +44,16 @@ class ApplicationStore extends BaseStore {
 
   rehydrate(state) {
     this.pageTitle = state.pageTitle;
+    this.pageIsLoading = state.pageIsLoading;
   }
 }
 
 ApplicationStore.storeName = 'ApplicationStore';
 ApplicationStore.handlers = {
-  'UPDATE_PAGE_TITLE': 'updatePageTitle'
+  'NAVIGATE_START': 'showThrobber',
+  'NAVIGATE_SUCCESS': 'hideThrobber',
+  'NAVIGATE_FAILURE': 'hideThrobber',
+  'UPDATE_PAGE_TITLE': 'updatePageTitle',
 };
 
 export default ApplicationStore;

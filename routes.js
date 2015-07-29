@@ -11,6 +11,7 @@ export default {
     label: 'Activity',
     action (context, payload, done) {
       context.executeAction(getActivity, {}, done);
+      context.dispatch('UPDATE_PAGE_TITLE', { pageTitle: 'Activity | Jugband' });
     }
   },
   roadmap: {
@@ -20,6 +21,7 @@ export default {
     label: 'Roadmap',
     action (context, payload, done) {
       context.executeAction(getRoadmap, {}, done);
+      context.dispatch('UPDATE_PAGE_TITLE', { pageTitle: 'Roadmap | Jugband' });
     }
   },
   ondeck: {
@@ -29,6 +31,7 @@ export default {
     label: 'On Deck',
     action (context, payload, done) {
       context.executeAction(getOnDeck, {}, done);
+      context.dispatch('UPDATE_PAGE_TITLE', { pageTitle: 'On Deck | Jugband' });
     }
   }
 };
