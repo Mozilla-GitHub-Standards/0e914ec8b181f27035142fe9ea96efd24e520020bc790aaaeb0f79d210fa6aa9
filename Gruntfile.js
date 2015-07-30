@@ -64,6 +64,5 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-webpack');
 
-  grunt.registerTask('deploy', ['clean', 'copy:assets']);
   grunt.registerTask('default', ['clean', 'copy:assets', 'concurrent:dev']);
 };
