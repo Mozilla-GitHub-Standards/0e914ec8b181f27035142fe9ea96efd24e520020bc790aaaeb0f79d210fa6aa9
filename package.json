@@ -16,6 +16,7 @@
   "dependencies": {
     "babel": "5.0",
     "babel-core": "*",
+    "babel-loader": "5.0.0",
     "bluebird": "2.9.34",
     "body-parser": "1.6.4",
     "classnames": "2.1.2",
@@ -30,8 +31,11 @@
     "fluxible-router": "0.2.0",
     "grunt": "0.4.5",
     "grunt-cli": "0.1.13",
+    "grunt-concurrent": "1.0.0",
     "grunt-contrib-clean": "0.6.0",
     "grunt-contrib-copy": "0.8.0",
+    "grunt-nodemon": "0.4.0",
+    "grunt-webpack": "1.0.8",
     "nconf": "0.7.1",
     "node-inspector": "0.12.1",
     "pm2": "0.14.5",
@@ -43,10 +47,6 @@
     "webpack": "*"
   },
   "devDependencies": {
-    "babel-loader": "5.0.0",
-    "grunt-concurrent": "1.0.0",
-    "grunt-nodemon": "0.4.0",
-    "grunt-webpack": "1.0.8",
     "nodemon": "1.2.1",
     "webpack-dev-server": "1.6.5"
   }
