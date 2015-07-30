@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "grunt",
     "start": "./node_modules/.bin/babel-node server.js",
-    "postinstall": "grunt deploy",
+    "postinstall": "grunt deploy"
   },
   "dependencies": {
     "babel": "5.0",
