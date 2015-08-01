@@ -12,21 +12,23 @@ import RoadmapSort from '../podio/RoadmapSort';
   return {
     onDeckItems: store.getAll(),
     activeSort: store.getSort(),
+    activeRoadmapItem: store.getActiveRoadmapItem()
   }
 })
 
 class Roadmap extends React.Component {
   getRoadmapItem (item, index) {
-    return <RoadmapItem key={item.id} index={index} item={item}/>;
+    let isActive = this.props.activeRoadmapItem == item.id;
+    return <RoadmapItem isActive={isActive} key={item.id} index={index} item={item}/>;
   }
 
   getRoadmapItems () {
-    return this.props.onDeckItems.map(this.getRoadmapItem);
+    return this.props.onDeckItems.map(this.getRoadmapItem.bind(this));
   }
 
   render () {
     return (
-      <section>
+      <section className="has_sort">
         <RoadmapSort activeSort={this.props.activeSort}/>
         {this.getRoadmapItems()}
       </section>

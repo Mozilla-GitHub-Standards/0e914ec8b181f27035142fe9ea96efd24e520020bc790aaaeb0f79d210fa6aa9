@@ -24,12 +24,12 @@ export default class Meta extends React.Component {
 
   metaMapping() {
     return [
-      {label: 'Team', value: this.getTeam()},
-      {label: 'Roadmap', value: this.props.item['Roadmap Status'] || false},
-      {label: 'Phase', value: this.getPhase()},
-      {label: 'Priority', value: this.props.item['Priority'] || false},
-      {label: 'T-Shirt', value: this.props.item['T-shirt'] || false},
-      {label: 'Target Launch', value: this.props.item['Target Launch_end'] || false},
+      {label: 'Team', slug: 'team', value: this.getTeam()},
+      {label: 'Roadmap', slug: 'Roadmap', value: this.props.item['Roadmap Status'] || false},
+      {label: 'Phase', slug: 'phase', value: this.getPhase()},
+      {label: 'Priority', slug: 'priority', value: this.props.item['Priority'] || false},
+      {label: 'T-Shirt', slug: 'tshirt', value: this.props.item['T-shirt'] || false},
+      {label: 'Target Launch', slug: 'launch', value: this.props.item['Target Launch_end'] || false},
     ];
   }
 
@@ -37,7 +37,7 @@ export default class Meta extends React.Component {
     let metaItems = [];
     this.metaMapping().forEach((metaItem, index) => {
       if (metaItem.value) {
-        metaItems.push(<MetaItem key={index} label={metaItem.label} value={metaItem.value}/>);
+        metaItems.push(<MetaItem key={index} label={metaItem.label} slug={metaItem.slug} value={metaItem.value}/>);
       }
     });
     return metaItems;

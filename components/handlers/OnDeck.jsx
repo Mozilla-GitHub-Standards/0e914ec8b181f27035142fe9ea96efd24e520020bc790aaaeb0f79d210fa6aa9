@@ -6,17 +6,22 @@ import OnDeckStore from '../../stores/OnDeckStore';
 import OnDeckItem from '../podio/OnDeckItem';
 
 
-@connectToStores([OnDeckStore], (context, props) => ({
-  onDeckItems: context.getStore(OnDeckStore).getAll()
-}))
+@connectToStores([OnDeckStore], (context, props) => {
+  let store = context.getStore(OnDeckStore);
+  return {
+    onDeckItems: store.getAll(),
+    activeOnDeckItem: store.getActiveOnDeckItem()
+  };
+})
 
 class OnDeck extends React.Component {
   getOnDeckItem (item, index) {
-    return <OnDeckItem key={item.id} index={index} item={item}/>;
+    let isActive = this.props.activeOnDeckItem == item.id;
+    return <OnDeckItem isActive={isActive} key={item.id} index={index} item={item}/>;
   }
 
   getOnDeckItems () {
-    return this.props.onDeckItems.map(this.getOnDeckItem);
+    return this.props.onDeckItems.map(this.getOnDeckItem.bind(this));
   }
 
   render() {
