@@ -8,6 +8,7 @@ export default class RoadmapStore extends BaseStore {
     this.dispatcher = dispatcher;
     this.roadmapItems = [];
     this.activeSort = 'default';
+    this.activeRoadmapItem = null;
   }
 
   receiveRoadmapItems (payload) {
@@ -15,14 +16,22 @@ export default class RoadmapStore extends BaseStore {
     this.emitChange();
   }
 
+  setActiveRoadmapItem (id) {
+    this.activeRoadmapItem = id;
+    this.emitChange();
+  }
+
   changeRoadmapSort (newSort) {
-    console.log('changing sort to', newSort);
     this.activeSort = newSort;
     this.emitChange();
   }
 
   getSort () {
     return this.activeSort;
+  }
+
+  getActiveRoadmapItem () {
+    return this.activeRoadmapItem;
   }
 
   getAll () {
@@ -75,12 +84,14 @@ export default class RoadmapStore extends BaseStore {
   dehydrate () {
     return {
       activeSort: this.activeSort,
+      activeRoadmapItem: this.activeRoadmapItem,
       roadmapItems: this.roadmapItems
     }
   }
 
   rehydrate (state) {
     this.activeSort = state.activeSort;
+    this.activeRoadmapItem = state.activeRoadmapItem;
     this.roadmapItems = state.roadmapItems;
   }
 }
@@ -89,4 +100,5 @@ RoadmapStore.storeName = 'RoadmapStore';
 RoadmapStore.handlers = {
   'CHANGE_ROADMAP_SORT': 'changeRoadmapSort',
   'RECEIVE_ROADMAP_ITEMS': 'receiveRoadmapItems',
+  'RECEIVE_ACTIVE_ROADMAP_ITEM': 'setActiveRoadmapItem',
 };

@@ -6,17 +6,22 @@ import ActivityStore from '../../stores/ActivityStore';
 import ActivityItem from '../podio/ActivityItem';
 
 
-@connectToStores([ActivityStore], (context, props) => ({
-  activityItems: context.getStore(ActivityStore).getAll()
-}))
+@connectToStores([ActivityStore], (context, props) => {
+  let store = context.getStore(ActivityStore);
+  return {
+    activityItems: store.getAll(),
+    activeActivityItem: store.getActiveActivityItem()
+  };
+})
 
 class Activity extends React.Component {
   getActivityItem (item, index) {
-    return <ActivityItem key={item.id} index={index} item={item}/>;
+    let isActive = this.props.activeActivityItem == item.id;
+    return <ActivityItem isActive={isActive} key={item.id} index={index} item={item}/>;
   }
 
   getActivityItems () {
-    return this.props.activityItems.map(this.getActivityItem);
+    return this.props.activityItems.map(this.getActivityItem.bind(this));
   }
 
   render() {

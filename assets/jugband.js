@@ -11,10 +11,16 @@
     }).insertBefore($body.find('header nav'));
 
     $body.on('click', '.hamburger', function(evt) {
+      evt.stopPropagation();
       $body.addClass(SHOW_NAV);
     });
 
-    $body.on('click', 'nav a:not(".active"), .overlay', function(evt) {
+    $body.on('click touchstart', '.overlay', function(evt) {
+      $body.removeClass(SHOW_NAV);
+      return false;
+    });
+
+    $body.on('click', 'nav a:not(".active")', function(evt) {
       if ($body.hasClass(SHOW_NAV)) {
         $body.removeClass(SHOW_NAV);
       }
