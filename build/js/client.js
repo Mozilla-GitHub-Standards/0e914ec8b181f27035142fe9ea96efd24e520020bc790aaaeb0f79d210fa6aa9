@@ -38379,15 +38379,15 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _actionsGetActivity = __webpack_require__(336);
+	var _actionsGetActivity = __webpack_require__(335);
 	
 	var _actionsGetActivity2 = _interopRequireDefault(_actionsGetActivity);
 	
-	var _actionsGetOnDeck = __webpack_require__(337);
+	var _actionsGetOnDeck = __webpack_require__(336);
 	
 	var _actionsGetOnDeck2 = _interopRequireDefault(_actionsGetOnDeck);
 	
-	var _actionsGetRoadmap = __webpack_require__(338);
+	var _actionsGetRoadmap = __webpack_require__(337);
 	
 	var _actionsGetRoadmap2 = _interopRequireDefault(_actionsGetRoadmap);
 	
@@ -38405,7 +38405,7 @@
 	  roadmap: {
 	    path: '/roadmap',
 	    method: 'get',
-	    handler: __webpack_require__(339),
+	    handler: __webpack_require__(338),
 	    label: 'Roadmap',
 	    action: function action(context, payload, done) {
 	      context.executeAction(_actionsGetRoadmap2['default'], {}, done);
@@ -38415,7 +38415,7 @@
 	  ondeck: {
 	    path: '/ondeck',
 	    method: 'get',
-	    handler: __webpack_require__(345),
+	    handler: __webpack_require__(344),
 	    label: 'On Deck',
 	    action: function action(context, payload, done) {
 	      context.executeAction(_actionsGetOnDeck2['default'], {}, done);
@@ -38538,27 +38538,27 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _actionsSetActiveActivity = __webpack_require__(326);
+	var _actionsSetActiveActivity = __webpack_require__(327);
 	
 	var _actionsSetActiveActivity2 = _interopRequireDefault(_actionsSetActiveActivity);
 	
-	var _BlockText = __webpack_require__(327);
+	var _BlockText = __webpack_require__(328);
 	
 	var _BlockText2 = _interopRequireDefault(_BlockText);
 	
-	var _Heroes = __webpack_require__(328);
+	var _Heroes = __webpack_require__(325);
 	
 	var _Heroes2 = _interopRequireDefault(_Heroes);
 	
-	var _Meta = __webpack_require__(330);
+	var _Meta = __webpack_require__(329);
 	
 	var _Meta2 = _interopRequireDefault(_Meta);
 	
-	var _Links = __webpack_require__(332);
+	var _Links = __webpack_require__(331);
 	
 	var _Links2 = _interopRequireDefault(_Links);
 	
-	var _Progress = __webpack_require__(334);
+	var _Progress = __webpack_require__(333);
 	
 	var _Progress2 = _interopRequireDefault(_Progress);
 	
@@ -38619,8 +38619,149 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 325 */,
+/* 325 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var _react = __webpack_require__(4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _HeroItem = __webpack_require__(326);
+	
+	var _HeroItem2 = _interopRequireDefault(_HeroItem);
+	
+	var Heroes = (function (_React$Component) {
+	  _inherits(Heroes, _React$Component);
+	
+	  function Heroes() {
+	    _classCallCheck(this, Heroes);
+	
+	    _get(Object.getPrototypeOf(Heroes.prototype), 'constructor', this).apply(this, arguments);
+	  }
+	
+	  _createClass(Heroes, [{
+	    key: 'heroMapping',
+	    value: function heroMapping() {
+	      return [{ label: 'Program', slug: 'program', value: this.props.item['team_project'] || false }, { label: 'Product', slug: 'product', value: this.props.item['team_product'] || false }, { label: 'UX/Design', slug: 'uxd', value: this.props.item['team_design'] || false }, { label: 'Development', slug: 'engineering', value: this.props.item['team_developers'] || false }];
+	    }
+	  }, {
+	    key: 'heroes',
+	    value: function heroes() {
+	      var heroes = [];
+	      this.heroMapping().forEach(function (hero) {
+	        if (hero.value) {
+	          heroes.push(_react2['default'].createElement(_HeroItem2['default'], { key: hero.slug, label: hero.label, slug: hero.slug, value: hero.value }));
+	        }
+	      });
+	      return heroes;
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var heroes = this.heroes();
+	      if (heroes.length == 0) {
+	        return false;
+	      }
+	      return _react2['default'].createElement(
+	        'section',
+	        { className: "heroes" },
+	        _react2['default'].createElement(
+	          'h3',
+	          null,
+	          'Heroes'
+	        ),
+	        _react2['default'].createElement(
+	          'dl',
+	          null,
+	          heroes
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return Heroes;
+	})(_react2['default'].Component);
+	
+	exports['default'] = Heroes;
+	module.exports = exports['default'];
+
+/***/ },
 /* 326 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+	
+	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var _react = __webpack_require__(4);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var HeroItem = (function (_React$Component) {
+	  _inherits(HeroItem, _React$Component);
+	
+	  function HeroItem() {
+	    _classCallCheck(this, HeroItem);
+	
+	    _get(Object.getPrototypeOf(HeroItem.prototype), 'constructor', this).apply(this, arguments);
+	  }
+	
+	  _createClass(HeroItem, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2['default'].createElement(
+	        'di',
+	        null,
+	        _react2['default'].createElement(
+	          'dt',
+	          null,
+	          this.props.label
+	        ),
+	        _react2['default'].createElement(
+	          'dd',
+	          { className: this.props.slug },
+	          this.props.value
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return HeroItem;
+	})(_react2['default'].Component);
+	
+	exports['default'] = HeroItem;
+	module.exports = exports['default'];
+
+/***/ },
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38645,7 +38786,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 327 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38709,89 +38850,6 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 328 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-	
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var _react = __webpack_require__(4);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _HeroItem = __webpack_require__(329);
-	
-	var _HeroItem2 = _interopRequireDefault(_HeroItem);
-	
-	var Heroes = (function (_React$Component) {
-	  _inherits(Heroes, _React$Component);
-	
-	  function Heroes() {
-	    _classCallCheck(this, Heroes);
-	
-	    _get(Object.getPrototypeOf(Heroes.prototype), 'constructor', this).apply(this, arguments);
-	  }
-	
-	  _createClass(Heroes, [{
-	    key: 'heroMapping',
-	    value: function heroMapping() {
-	      return [{ label: 'Program', slug: 'program', value: this.props.item['team_project'] || false }, { label: 'Product', slug: 'product', value: this.props.item['team_product'] || false }, { label: 'UX/Design', slug: 'uxd', value: this.props.item['team_design'] || false }, { label: 'Development', slug: 'engineering', value: this.props.item['team_developers'] || false }];
-	    }
-	  }, {
-	    key: 'heroes',
-	    value: function heroes() {
-	      var heroes = [];
-	      this.heroMapping().forEach(function (hero) {
-	        if (hero.value) {
-	          heroes.push(_react2['default'].createElement(_HeroItem2['default'], { key: hero.slug, label: hero.label, slug: hero.slug, value: hero.value }));
-	        }
-	      });
-	      return heroes;
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var heroes = this.heroes();
-	      if (heroes.length == 0) {
-	        return false;
-	      }
-	      return _react2['default'].createElement(
-	        'section',
-	        { className: "heroes" },
-	        _react2['default'].createElement(
-	          'h3',
-	          null,
-	          'Heroes'
-	        ),
-	        _react2['default'].createElement(
-	          'dl',
-	          null,
-	          heroes
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return Heroes;
-	})(_react2['default'].Component);
-	
-	exports['default'] = Heroes;
-	module.exports = exports['default'];
-
-/***/ },
 /* 329 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -38815,66 +38873,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var HeroItem = (function (_React$Component) {
-	  _inherits(HeroItem, _React$Component);
-	
-	  function HeroItem() {
-	    _classCallCheck(this, HeroItem);
-	
-	    _get(Object.getPrototypeOf(HeroItem.prototype), 'constructor', this).apply(this, arguments);
-	  }
-	
-	  _createClass(HeroItem, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2['default'].createElement(
-	        'di',
-	        null,
-	        _react2['default'].createElement(
-	          'dt',
-	          null,
-	          this.props.label
-	        ),
-	        _react2['default'].createElement(
-	          'dd',
-	          { className: this.props.slug },
-	          this.props.value
-	        )
-	      );
-	    }
-	  }]);
-	
-	  return HeroItem;
-	})(_react2['default'].Component);
-	
-	exports['default'] = HeroItem;
-	module.exports = exports['default'];
-
-/***/ },
-/* 330 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-	
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var _react = __webpack_require__(4);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _MetaItem = __webpack_require__(331);
+	var _MetaItem = __webpack_require__(330);
 	
 	var _MetaItem2 = _interopRequireDefault(_MetaItem);
 	
@@ -38949,7 +38948,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 331 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39008,7 +39007,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 332 */
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39031,7 +39030,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _LinkItem = __webpack_require__(333);
+	var _LinkItem = __webpack_require__(332);
 	
 	var _LinkItem2 = _interopRequireDefault(_LinkItem);
 	
@@ -39091,7 +39090,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 333 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -39145,7 +39144,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 334 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39168,7 +39167,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _ProgressItem = __webpack_require__(335);
+	var _ProgressItem = __webpack_require__(334);
 	
 	var _ProgressItem2 = _interopRequireDefault(_ProgressItem);
 	
@@ -39228,7 +39227,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 335 */
+/* 334 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39299,7 +39298,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 336 */
+/* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39327,7 +39326,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 337 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39355,7 +39354,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 338 */
+/* 337 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39383,7 +39382,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 339 */
+/* 338 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39414,11 +39413,11 @@
 	
 	var _storesRoadmapStore2 = _interopRequireDefault(_storesRoadmapStore);
 	
-	var _podioRoadmapItem = __webpack_require__(340);
+	var _podioRoadmapItem = __webpack_require__(339);
 	
 	var _podioRoadmapItem2 = _interopRequireDefault(_podioRoadmapItem);
 	
-	var _podioRoadmapSort = __webpack_require__(342);
+	var _podioRoadmapSort = __webpack_require__(341);
 	
 	var _podioRoadmapSort2 = _interopRequireDefault(_podioRoadmapSort);
 	
@@ -39474,7 +39473,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 340 */
+/* 339 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39501,19 +39500,19 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _actionsSetActiveRoadmap = __webpack_require__(341);
+	var _actionsSetActiveRoadmap = __webpack_require__(340);
 	
 	var _actionsSetActiveRoadmap2 = _interopRequireDefault(_actionsSetActiveRoadmap);
 	
-	var _BlockText = __webpack_require__(327);
+	var _BlockText = __webpack_require__(328);
 	
 	var _BlockText2 = _interopRequireDefault(_BlockText);
 	
-	var _Meta = __webpack_require__(330);
+	var _Meta = __webpack_require__(329);
 	
 	var _Meta2 = _interopRequireDefault(_Meta);
 	
-	var _Links = __webpack_require__(332);
+	var _Links = __webpack_require__(331);
 	
 	var _Links2 = _interopRequireDefault(_Links);
 	
@@ -39572,7 +39571,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 341 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39597,7 +39596,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 342 */
+/* 341 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39620,7 +39619,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _podioRoadmapSortItem = __webpack_require__(343);
+	var _podioRoadmapSortItem = __webpack_require__(342);
 	
 	var _podioRoadmapSortItem2 = _interopRequireDefault(_podioRoadmapSortItem);
 	
@@ -39676,7 +39675,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 343 */
+/* 342 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39703,7 +39702,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _actionsChangeRoadmapSort = __webpack_require__(344);
+	var _actionsChangeRoadmapSort = __webpack_require__(343);
 	
 	var _actionsChangeRoadmapSort2 = _interopRequireDefault(_actionsChangeRoadmapSort);
 	
@@ -39762,7 +39761,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 344 */
+/* 343 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -39779,7 +39778,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 345 */
+/* 344 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39810,7 +39809,7 @@
 	
 	var _storesOnDeckStore2 = _interopRequireDefault(_storesOnDeckStore);
 	
-	var _podioOnDeckItem = __webpack_require__(346);
+	var _podioOnDeckItem = __webpack_require__(345);
 	
 	var _podioOnDeckItem2 = _interopRequireDefault(_podioOnDeckItem);
 	
@@ -39864,7 +39863,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 346 */
+/* 345 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -39891,23 +39890,23 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _actionsSetActiveOnDeck = __webpack_require__(347);
+	var _actionsSetActiveOnDeck = __webpack_require__(346);
 	
 	var _actionsSetActiveOnDeck2 = _interopRequireDefault(_actionsSetActiveOnDeck);
 	
-	var _BlockText = __webpack_require__(327);
+	var _BlockText = __webpack_require__(328);
 	
 	var _BlockText2 = _interopRequireDefault(_BlockText);
 	
-	var _Meta = __webpack_require__(330);
+	var _Meta = __webpack_require__(329);
 	
 	var _Meta2 = _interopRequireDefault(_Meta);
 	
-	var _Links = __webpack_require__(332);
+	var _Links = __webpack_require__(331);
 	
 	var _Links2 = _interopRequireDefault(_Links);
 	
-	var _Progress = __webpack_require__(334);
+	var _Progress = __webpack_require__(333);
 	
 	var _Progress2 = _interopRequireDefault(_Progress);
 	
@@ -39967,7 +39966,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 347 */
+/* 346 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

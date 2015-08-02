@@ -27,6 +27,7 @@
     "fluxible-addons-react": "0.1.6",
     "fluxible-plugin-fetchr": "0.3.3",
     "fluxible-router": "0.2.0",
+    "memjs": "^0.8.6",
     "nconf": "0.7.1",
     "node-inspector": "0.12.1",
     "pm2": "0.14.5",

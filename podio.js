@@ -1,4 +1,5 @@
 var format = require('util').format;
+var memcached = require('./memcached');
 var Podio = require('podio-js').api;
 var Promise = require('bluebird');
 var url = require('url');
@@ -112,12 +113,19 @@ var transmogrify = function(data) {
 
 // Passed a filter object, returns a promise that resolves to the
 // transmogrified results of a Podio item search with those filters.
-function PodioRequest(filters) {
+function PodioRequest(view_name, filters) {
   return new Promise(function(resolve, reject) {
     PodioAuthenticate().then(function(client) {
       var url = format('/item/app/%d/filter/', config.get('PODIO_APP_ID'));
       var request = client.request('POST', url, filters).then(function(response) {
-        resolve(transmogrify(response));
+        var transmogrified = transmogrify(response);
+        if (config.get('USE_MEMCACHED')) {
+          memcached.set(config.get('MEMCACHE_PREFIX') + view_name, JSON.stringify(transmogrified), function(err, val){
+            resolve(transmogrified);
+          }, config.get('MEMCACHE_TIMEOUT'));
+        } else {
+          resolve(transmogrified);
+        }
       });
     }).catch(function(err) {
       reject(err);
@@ -126,10 +134,29 @@ function PodioRequest(filters) {
 }
 
 
-// Curries the PodioRequest function with a specific set of filters.
-var ondeck = function() { return PodioRequest(FILTERS.ONDECK); };
-var roadmap = function() { return PodioRequest(FILTERS.ROADMAP); }
-var activity = function() { return PodioRequest(FILTERS.ACTIVITY); };
+function JugbandRequest(view_name, filters) {
+  if (config.get('USE_MEMCACHED')) {
+    return new Promise(function(resolve, reject) {
+      memcached.get(config.get('MEMCACHE_PREFIX') + view_name, function(err, val){
+        if (val) {
+          resolve(JSON.parse(val))
+        } else {
+          PodioRequest(view_name, filters).then(function(val) {
+            resolve(val);
+          });
+        }
+      });
+    });
+  } else {
+    return PodioRequest(view_name, filters)
+  }
+}
+
+
+// Curries the JugbandRequest function with a specific set of filters.
+var ondeck = function() { return JugbandRequest('ondeck', FILTERS.ONDECK); };
+var roadmap = function() { return JugbandRequest('roadmap', FILTERS.ROADMAP); }
+var activity = function() { return JugbandRequest('activity', FILTERS.ACTIVITY); };
 
 
 module.exports = {
