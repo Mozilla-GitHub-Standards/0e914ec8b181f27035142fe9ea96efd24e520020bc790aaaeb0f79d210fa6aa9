@@ -530,16 +530,6 @@ footer a:hover {
   .links h3 {
     margin: 4px 0 0;
   }
-  di,
-  .progress di {
-    margin: 0 0 10px;
-  }
-  di:last-child {
-    margin-bottom: 0;
-  }
-  .heroes dd {
-    display: block;
-  }
 }
 
 @media only screen and (max-width: 640px)  {
